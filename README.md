@@ -1,6 +1,7 @@
 # Kanban Board
 
 A job application tracker with drag-and-drop between columns. Built with **Next.js 16**, **React 19**, **dnd-kit**, and **localStorage** persistence.
+![CI](https://github.com/marinaburyakova/kanban-board/actions/workflows/ci.yml/badge.svg)
 
 ![Kanban Board](./public/screenshots/kanban.png)
 
