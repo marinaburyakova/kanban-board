@@ -1,0 +1,90 @@
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--bg-elevated);
+  border-radius: 12px;
+  padding: 12px;
+  border-top: 3px solid var(--col-color, var(--border));
+}
+
+.column[data-column-id="wishlist"] {
+  --col-color: var(--column-wishlist);
+}
+.column[data-column-id="applied"] {
+  --col-color: var(--column-applied);
+}
+.column[data-column-id="interview"] {
+  --col-color: var(--column-interview);
+}
+.column[data-column-id="offer"] {
+  --col-color: var(--column-offer);
+}
+.column[data-column-id="rejected"] {
+  --col-color: var(--column-rejected);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--col-color, var(--text-muted));
+}
+
+.count {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--col-color, var(--text-dim));
+  background: color-mix(
+    in srgb,
+    var(--col-color, var(--text-dim)) 15%,
+    transparent
+  );
+  padding: 2px 8px;
+  border-radius: 999px;
+  min-width: 24px;
+  text-align: center;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 60px; /* ← было 40px, увеличили */
+  transition: background 0.15s;
+  padding: 4px;
+  border-radius: 8px;
+  margin: -4px; /* ← компенсируем padding, чтобы не сдвинуть раскладку */
+}
+.cardsOver {
+  background: color-mix(in srgb, var(--col-color) 8%, transparent);
+  outline: 2px dashed var(--col-color);
+  outline-offset: -4px;
+}
+
+.addButton {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px dashed var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  transition:
+    border-color 0.15s,
+    color 0.15s;
+}
+
+.addButton:hover {
+  border-color: var(--col-color, var(--accent));
+  color: var(--col-color, var(--accent));
+}
