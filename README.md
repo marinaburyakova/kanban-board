@@ -3,7 +3,7 @@
 A job application tracker with drag-and-drop between columns. Built with **Next.js 16**, **React 19**, **dnd-kit**, and **localStorage** persistence.
 ![CI](https://github.com/marinaburyakova/kanban-board/actions/workflows/ci.yml/badge.svg)
 
-![Kanban Board](./public/screenshots/kanban.png)
+![Kanban Board](./public/kanban.png)
 
 ## Features
 
@@ -49,44 +49,6 @@ Blocks `javascript:`, `data:`, `file:` protocols. Protects against XSS via href.
 ### LocalStorage with debounced save
 
 State is saved to `localStorage` with a 300ms debounce. Prevents writing on every mousemove during drag. Key is versioned (`kanban-board-v1`) so schema changes don't break old data.
-
-### Type-safe ColumnId
-
-```ts
-export const COLUMN_IDS = [...] as const
-export type ColumnId = (typeof COLUMN_IDS)[number]
-export function isColumnId(id: string): id is ColumnId
-Single source of truth + type guard for narrow types.
-
-Project Structure
-text
-src/
-  app/
-    page.tsx                  # Server Component
-    layout.tsx
-  components/
-    BoardClientWrapper.tsx    # Client, dynamic with ssr:false
-    BoardClient.tsx           # DndContext + state
-    Column.tsx                # useDroppable + SortableContext
-    Card.tsx                  # useSortable
-    CardModal.tsx             # add/edit form
-    Button.tsx
-  lib/
-    kanban.ts                 # pure functions + types
-Getting Started
-bash
-git clone <repo-url> kanban-board
-cd kanban-board
-npm install
-npm run dev
-Open http://localhost:3000.
-
-Available Scripts
-Command	Description
-npm run dev	Start dev server
-npm run build	Build for production
-npm run start	Start production server
-npm run lint	Run ESLint
 
   ## Roadmap
 Unit tests for moveCard — the off-by-one logic deserves tests
