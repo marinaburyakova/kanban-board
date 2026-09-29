@@ -18,14 +18,14 @@ A job application tracker with drag-and-drop between columns. Built with **Next.
 
 ## Tech Stack
 
-| Layer | Tech |
-|---|---|
-| Framework | Next.js 16 (App Router) |
-| UI | React 19 |
-| Language | TypeScript (strict) |
-| State | `useState` + `localStorage` |
-| DnD | `@dnd-kit/core`, `@dnd-kit/sortable`, `@dnd-kit/utilities` |
-| Styling | CSS Modules |
+| Layer     | Tech                                                       |
+| --------- | ---------------------------------------------------------- |
+| Framework | Next.js 16 (App Router)                                    |
+| UI        | React 19                                                   |
+| Language  | TypeScript (strict)                                        |
+| State     | `useState` + `localStorage`                                |
+| DnD       | `@dnd-kit/core`, `@dnd-kit/sortable`, `@dnd-kit/utilities` |
+| Styling   | CSS Modules                                                |
 
 ## Architecture Decisions
 
@@ -40,6 +40,7 @@ All business logic lives in pure functions: `createCard`, `addCard`, `removeCard
 ### Defense in depth for URLs
 
 Three layers of URL validation:
+
 1. **Form** (`CardModal`) — `isValidUrl` — early UX feedback
 2. **Sanitizer** (`lib/kanban.ts`) — `sanitizeUrl` — invariant on create / update
 3. **Render** (`Card`) — `isSafeUrl` — final guard before `<a href>`
@@ -50,20 +51,23 @@ Blocks `javascript:`, `data:`, `file:` protocols. Protects against XSS via href.
 
 State is saved to `localStorage` with a 300ms debounce. Prevents writing on every mousemove during drag. Key is versioned (`kanban-board-v1`) so schema changes don't break old data.
 
-  ## Roadmap
+## Roadmap
+
 Unit tests for moveCard — the off-by-one logic deserves tests
- Server persistence — Prisma + PostgreSQL instead of localStorage
- Multi-user with auth — different boards per user
- Search and filters — by company, position, tag
- Keyboard shortcuts — N for new card, / for search
- Move history — undo last drag
- Dark / light theme — currently dark only
- ## Author
+Server persistence — Prisma + PostgreSQL instead of localStorage
+Multi-user with auth — different boards per user
+Search and filters — by company, position, tag
+Keyboard shortcuts — N for new card, / for search
+Move history — undo last drag
+Dark / light theme — currently dark only
+
+## Author
+
 Marina Dev — Fullstack Developer
 
 ## GitHub: @marinaburyakova
 
-Portfolio: mint-apps.com
+Portfolio: https://portfolio.mint-apps.com/
 
 License
 MIT
